@@ -2,6 +2,7 @@ import { BackgroundLines } from "@/components/ui/background-lines";
 import { useEffect, useRef } from "react";
 import Typed from "typed.js";
 import techStack from "@/constants/techstack";
+import TechStack from "@/components/TechStack";
 
 export default function Hero() {
   const typedRef = useRef<HTMLElement | null>(null);
@@ -53,11 +54,13 @@ export default function Hero() {
             <span ref={typedRef}></span>
           </h2>
 
-          <p className="text-gray-600 mt-4 max-w-md dark:text-white">
-            A wizard of code, weaving stories through projects and applications.
-            I'm passionate about web development and an enthusiast for
-            technology, constantly crafting web experiences and building tools
-            that make an impact.
+          <p className="text-gray-600 text-left tracking-tighter leading-5 font-serif mt-4 max-w-md dark:text-white">
+            I transform ideas into elegant web experiences through code. Like a
+            modern-day wizard, I blend technical expertise with creative vision
+            to build applications that solve real problems while delighting
+            users. My work combines thoughtful design with powerful
+            functionality, creating digital solutions that leave a lasting
+            impact in an ever-evolving technological landscape.
           </p>
         </div>
 
@@ -71,23 +74,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className="mt-8">
-        <h3 className="text-2xl font-bold mb-4">Tech Stack</h3>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          {techStack.map((item) => (
-            <div
-              key={item.name}
-              className="flex items-center p-1 border rounded-lg shadow-md dark:bg-[#0A0A0A]"
-            >
-              <img src={item.logo} alt={item.name} className="w-4 h-4 mr-4 dark:text-white" />
-              <div>
-                <h4 className="text-sm font-semibold">{item.name}</h4>
-                <p className="text-gray-500 text-sm">{item.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <TechStack/>
     </div>
   );
 }

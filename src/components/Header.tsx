@@ -36,10 +36,10 @@ const Header = () => {
               </NavLink>
             ))}
           </div>
-        </div>
-        <div className="flex items-center">
-          <ModeToggle />
-          <HamBurger />
+          <div className="flex items-center">
+            <ModeToggle />
+            <HamBurger />
+          </div>
         </div>
       </div>
     </header>

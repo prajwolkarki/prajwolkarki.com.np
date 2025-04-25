@@ -31,12 +31,12 @@ const techStack = [
   },
   {
     name: "CSS",
-    description: "Style Sheets Language",
+    description: "Styling Language",
     logo: "css.svg",
   },
   {
     name: "Git",
-    description: "Version Control System",
+    description: "VersionControl",
     logo: "git.svg",
   },
   {
