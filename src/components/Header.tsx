@@ -2,7 +2,6 @@ import { NavLink } from "react-router";
 import { ModeToggle } from "./mode-toggle";
 import { navLinks } from "@/constants/links";
 import { HamBurger } from "./HamBurger";
-import { RoughNotation } from "react-rough-notation";
 
 const Header = () => {
   return (
@@ -13,9 +12,7 @@ const Header = () => {
             to="/"
             className="text-black text-xl font-medium font-tagesschrift dark:text-white"
           >
-            <RoughNotation type="underline" color="#D946EF" show={true}>
             Jholey Codes
-            </RoughNotation>
           </NavLink>
         </div>
         <div className=" items-center font-tagesschrift md:flex">

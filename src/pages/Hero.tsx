@@ -2,7 +2,7 @@ import { BackgroundLines } from "@/components/ui/background-lines";
 import { useEffect, useRef } from "react";
 import Typed from "typed.js";
 import TechStack from "@/components/TechStack";
-import { RoughNotation } from "react-rough-notation";
+
 
 export default function Hero() {
   const typedRef = useRef<HTMLElement | null>(null);
@@ -75,11 +75,11 @@ export default function Hero() {
         </div>
       </div>
       <div className="flex justify-center mt-6">
-        <RoughNotation type="circle" show={true} color="#f9a8d4">
+
           <h1 className="inline-block p-4 font-bold font-tagesschrift text-2xl">
             Skills and Tools I Use
           </h1>
-        </RoughNotation>
+
       </div>
 
       <TechStack />

@@ -9,7 +9,6 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "npm run dev"
-    
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.11",
@@ -29,7 +28,6 @@
     "react-dom": "^19.0.0",
     "react-fast-marquee": "^1.6.5",
     "react-icons": "^5.5.0",
-    "react-rough-notation": "^1.0.5",
     "react-router": "^7.5.2",
     "tailwind-merge": "^3.2.0",
     "tailwindcss": "^4.1.4",
