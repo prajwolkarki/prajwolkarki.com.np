@@ -44,10 +44,10 @@ export default function Hero() {
       />
       <div className="flex flex-col gap-5 md:flex-row justify-between items-start">
         <div className="order-1 md:order-2">
-          <h1 className="text-5xl font-bold">
-            <span className="text-gray-500">Hi, I'm </span>
-            <span className="bg-gradient-to-r from-fuchsia-600 to-pink-600 text-transparent bg-clip-text">
-              Prajwol
+          <h1 className="text-4xl font-bold">
+            <span className="text-gray-500 font-tagesschrift">Hi, I'm </span>
+            <span className="bg-gradient-to-r from-fuchsia-600 to-pink-600 text-transparent bg-clip-text font-tagesschrift inline-block w-fit">
+              Prajwol Karki
             </span>
           </h1>
           <h2 className="text-lg bg-gradient-to-r from-fuchsia-600 to-pink-600 mt-2 text-transparent bg-clip-text font-bold">
