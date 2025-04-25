@@ -1,8 +1,8 @@
 import { BackgroundLines } from "@/components/ui/background-lines";
 import { useEffect, useRef } from "react";
 import Typed from "typed.js";
-import techStack from "@/constants/techstack";
 import TechStack from "@/components/TechStack";
+import { RoughNotation } from "react-rough-notation";
 
 export default function Hero() {
   const typedRef = useRef<HTMLElement | null>(null);
@@ -54,7 +54,7 @@ export default function Hero() {
             <span ref={typedRef}></span>
           </h2>
 
-          <p className="text-gray-600 text-left tracking-tighter leading-5 font-serif mt-4 max-w-md dark:text-white">
+          <p className="text-gray-600 text-left -tracking-wide leading-5 font-serif mt-4 max-w-md dark:text-white">
             I transform ideas into elegant web experiences through code. Like a
             modern-day wizard, I blend technical expertise with creative vision
             to build applications that solve real problems while delighting
@@ -64,7 +64,7 @@ export default function Hero() {
           </p>
         </div>
 
-        <div className="mt-6 md:mt-0 md:order-1 md:mr-8">
+        <div className="mt-6 md:mt-0 md:order-1 md:mr-8 ">
           <div className="w-32 h-32 md:w-50 md:h-50 border-black dark:border-white border rounded-full p-4">
             <img
               src="/images/profile.png"
@@ -74,7 +74,15 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <TechStack/>
+      <div className="flex justify-center mt-6">
+        <RoughNotation type="circle" show={true} color="#f9a8d4">
+          <h1 className="inline-block p-4 font-bold font-tagesschrift text-2xl">
+            Skills and Tools I Use
+          </h1>
+        </RoughNotation>
+      </div>
+
+      <TechStack />
     </div>
   );
 }

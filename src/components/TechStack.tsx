@@ -1,20 +1,27 @@
 import techStack from "@/constants/techstack";
 import Marquee from "react-fast-marquee";
 
-const TechCard = ({ tech, index }: { tech: any; index: number }) => (
-  <div
-    key={index}
-    className="flex items-center space-x-2 bg-gray-100 dark:bg-neutral-800 px-2 py-1 rounded-[4px] shadow-sm transition-transform duration-300 hover:scale-105 w-40 h-14 mr-2 overflow-hidden"
-  >
-    <img src={tech.logo} alt={tech.name} className="w-5 h-5 flex-shrink-0" />
-    <div className="overflow-hidden">
-      <p className="text-sm font-medium truncate">{tech.name}</p>
-      <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2">
-        {tech.description}
-      </p>
-    </div>
-  </div>
-);
+const TechCard = ({ tech, index }: { tech: any; index: number }) => {
+    const IconComponent = tech.icon;
+  
+    return (
+      <div
+        key={index}
+        className="flex items-center space-x-2 bg-gray-100 dark:bg-neutral-800 px-2 py-1 rounded-[4px] shadow-sm transition-transform duration-300 hover:scale-105 w-40 h-14 mr-2 overflow-hidden"
+      >
+        <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center">
+          <IconComponent size={24} color={tech.color} />
+        </div>
+        <div className="overflow-hidden">
+          <p className="text-sm font-medium truncate">{tech.name}</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2">
+            {tech.description}
+          </p>
+        </div>
+      </div>
+    );
+  };
+  
 
 const TechStack = () => {
   const firstRow = techStack.slice(0, 6);
