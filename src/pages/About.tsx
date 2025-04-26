@@ -13,7 +13,7 @@ export default router;`;
 
   return (
     <>
-      <SyntaxHighlighter language="javascript" style={dracula} showLineNumbers customStyle={{ overflowY: "auto", overflowX: "hidden" }}>
+      <SyntaxHighlighter language="javascript" style={dracula} showLineNumbers customStyle={{ overflow:"hidden",scrollbarWidth:"none" ,overflowX:"auto"}}>
         {codeString}
       </SyntaxHighlighter>
     </>
