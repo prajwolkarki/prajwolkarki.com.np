@@ -25,7 +25,7 @@ const Location = () => {
 
   return (
     location && (
-      <p className="text-sm">
+      <p className="text-[12px] relative top-[2px] font-tagesschrift">
         Last Visit From: {location ? location.slice(-2) : "Loading location..."}
       </p>
     )
