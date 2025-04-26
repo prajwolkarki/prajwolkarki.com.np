@@ -5,7 +5,6 @@ const useGetBlogBySlug = (slug:any) => {
     return useQuery({
         queryKey: ["blog",slug],
         queryFn: () => getSingleBlog(slug),
-        enabled:!!slug,
         staleTime: 5 * 60 * 1000, 
     })
 }

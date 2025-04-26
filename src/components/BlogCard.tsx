@@ -44,13 +44,13 @@ const BlogCard: React.FC<BlogCardProps> = ({
         )}
         <div className="flex-grow">
           <CardHeader className="p-0 pb-2">
-            <CardTitle className="text-lg font-bold hover:text-blue-600 transition-colors">
+            <CardTitle className="text-lg font-bold hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-blue-500 to-pink-600 transition-colors">
               {title}
             </CardTitle>
           </CardHeader>
-          <CardFooter className="p-0 flex flex-col items-start sm:flex-row sm:items-center gap-1 sm:gap-4 text-xs text-gray-500">
+          <CardFooter className="p-0 flex flex-col items-start sm:flex-row sm:items-center gap-1 sm:gap-4 text-xs dark:text-white">
             <div>{formatDate(publishedAt)}</div>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 dark:text-white">
               <User2 size={16} />
               {authorName}
             </div>

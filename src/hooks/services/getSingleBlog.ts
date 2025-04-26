@@ -1,6 +1,12 @@
 import { client } from "@/sanity/lib/client";
+import imageUrlBuilder from "@sanity/image-url";
+const builder = imageUrlBuilder(client);
 
-export default async function getSingleBlog(slug:any) {
+function urlFor(source: any) {
+  return builder.image(source);
+}
+
+export default async function getSingleBlog(slug: any) {
   const query = `*[_type == "post" && slug.current == $slug][0] {
         _id,
         title,
@@ -13,5 +19,15 @@ export default async function getSingleBlog(slug:any) {
         "categories": categories[]->title
       }`;
 
-  return client.fetch(query, { slug });
+  const post = await client.fetch(query, { slug });
+
+  if (post.mainImage) {
+    post.mainImageUrl = urlFor(post.mainImage).url();
+  }
+
+  if (post.authorImage) {
+    post.authorImageUrl = urlFor(post.authorImage).url();
+  }
+
+  return post;
 }

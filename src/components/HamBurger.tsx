@@ -12,7 +12,7 @@ import { NavLink } from "react-router"
 export function HamBurger() {
   return (
     <Sheet>
-      <SheetTrigger asChild className="md:hidden">
+      <SheetTrigger asChild className="lg:hidden">
         <Menu className="h-5 w-5 cursor-pointer text-muted-foreground transition-colors hover:text-primary" />
       </SheetTrigger>
       <SheetContent className="w-50 font-tagesschrift">

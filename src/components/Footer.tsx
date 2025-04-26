@@ -14,13 +14,13 @@ const Footer = () => {
         </div>
         <div className="flex space-x-4">
           <Link to="https://github.com/prajwolkarki" className="transition-colors" target="_blank">
-            <GithubIcon className="w-5 h-5 text-gray-600 dark:text-white hover:text-fuchsia-600" />
+            <GithubIcon className="w-5 h-5 text-gray-600 dark:text-white hover:text-fuchsia-600 dark:hover:text-fuchsia-600" />
           </Link>
           <Link to="https://linkedin.com/in/prajwolkarki" className="transition-colors" target="_blank">
-            <Linkedin className="w-5 h-5 text-gray-600 dark:text-white hover:text-fuchsia-600" />
+            <Linkedin className="w-5 h-5 text-gray-600 dark:text-white hover:text-fuchsia-600 dark:hover:text-fuchsia-600" />
           </Link>
           <Link to="https://instagram.com/prajwol.karki" className="transition-colors" target="_blank">
-            <Instagram className="w-5 h-5 text-gray-600 dark:text-white hover:text-fuchsia-600" />
+            <Instagram className="w-5 h-5 text-gray-600 dark:text-white hover:text-fuchsia-600 dark:hover:text-fuchsia-600" />
           </Link>
         </div>
       </div>

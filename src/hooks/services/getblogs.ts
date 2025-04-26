@@ -16,6 +16,5 @@ export default async function getBlogs() {
     "authorName": author->name,
     "categories": categories[]->title
   }`;
-  
   return client.fetch(query);
 }
