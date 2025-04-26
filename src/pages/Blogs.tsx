@@ -19,7 +19,7 @@ const Blogs = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold font-tagesschrift underline">Blogs</h1>
-      <p className='text-slate-400 mt-2 mb-3 select-none font-tagesschrift'>The place where I share my thoughts,ideas and experiences about software development.</p>
+      <p className='text-slate-400 mt-2 mb-3 select-none font-tagesschrift pl-5'>The place where I share my thoughts,ideas and experiences about software development.</p>
       <div className="flex flex-col gap-4">
         {posts?.map((post:any) => (
           <BlogCard
