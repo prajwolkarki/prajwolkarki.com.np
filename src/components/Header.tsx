@@ -10,7 +10,7 @@ const Header = () => {
         <div className="logo">
           <NavLink
             to="/"
-            className="text-black text-xl font-medium font-tagesschrift dark:text-white"
+            className="bg-gradient-to-r from-fuchsia-600 to-pink-600 text-transparent bg-clip-text text-xl font-medium font-tagesschrift dark:text-white"
           >
             Jholey Codes
           </NavLink>
