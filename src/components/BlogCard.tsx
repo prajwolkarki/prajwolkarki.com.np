@@ -29,10 +29,10 @@ const BlogCard: React.FC<BlogCardProps> = ({
 
   return (
     <Card
-      className="overflow-hidden border-none outline-none shadow-none hover:shadow-sm cursor-pointer h-34"
+      className="overflow-hidden  border-none outline-none shadow-none hover:shadow-sm cursor-pointer h-34"
       onClick={() => onClick?.(slug)}
     >
-      <div className="flex items-center gap-5 pl-4">
+      <div className="flex items-center gap-5 pl-4  h-full">
         {imageUrl && (
           <div className="flex-shrink-0 w-24 h-24 relative rounded-md overflow-hidden">
             <img
