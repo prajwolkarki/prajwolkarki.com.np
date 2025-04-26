@@ -1,5 +1,6 @@
 import { GithubIcon, Instagram, Linkedin } from "lucide-react";
 import { Link } from "react-router";
+import Location from "./Location";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -22,6 +23,7 @@ const Footer = () => {
           <Link to="https://instagram.com/prajwol.karki" className="transition-colors" target="_blank">
             <Instagram className="w-5 h-5 text-gray-600 dark:text-white hover:text-fuchsia-600 dark:hover:text-fuchsia-600" />
           </Link>
+          <Location/>
         </div>
       </div>
     </footer>
