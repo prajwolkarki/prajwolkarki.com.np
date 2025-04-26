@@ -97,7 +97,7 @@ const BlogPost = () => {
             <img
               src={post.mainImageUrl}
               alt={post.title}
-              className="w-full h-full rounded-xl shadow-lg object-cover"
+              className="w-full h-full rounded-xl shadow-lg object-contain"
             />
           </figure>
         )}
