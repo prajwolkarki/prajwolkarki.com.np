@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {
   ArrowRight,
-  Code,
+  University,
   Download,
   Github,
   Linkedin,
@@ -88,14 +88,14 @@ export default router;`;
                 <User className="mr-2 h-4 w-4" /> About Me
               </TabsTrigger>
               <TabsTrigger value="code" className="flex items-center">
-                <Code className="mr-2 h-4 w-4" /> Education
+                <University  className="mr-2 h-4 w-4" /> Education
               </TabsTrigger>
             </TabsList>
 
             <TabsContent value="about" className="mt-6">
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-2xl font-bold mb-4">More About Me!!</h2>
+                  <h2 className="text-2xl font-bold mb-4 font-tagesschrift">More About Me!!</h2>
                   <p className="text-sm font-tagesschrift leading-relaxed">
                     I'm a passionate individual with expertise in various
                     fields. I enjoy solving complex problems and creating
