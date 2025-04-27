@@ -188,34 +188,6 @@ export default router;`;
                   >
                     {codeString}
                   </SyntaxHighlighter>
-          
-
-              <div className="mt-6">
-                <h3 className="text-xl font-semibold mb-3">My Tech Stack</h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  {[
-                    "JavaScript",
-                    "TypeScript",
-                    "React",
-                    "Next.js",
-                    "Node.js",
-                    "Express",
-                    "MongoDB",
-                    "PostgreSQL",
-                    "Tailwind CSS",
-                    "Git",
-                    "Docker",
-                    "AWS",
-                  ].map((tech) => (
-                    <div
-                      key={tech}
-                      className="bg-muted rounded-md p-3 text-center"
-                    >
-                      {tech}
-                    </div>
-                  ))}
-                </div>
-              </div>
             </TabsContent>
           </Tabs>
         </div>
