@@ -80,7 +80,7 @@ export default function Projects() {
     activeCategory === "all" ? projects : projects.filter((project) => project.category === activeCategory)
 
   return (
-    <section className="py-16 px-4 md:px-6 lg:px-8 bg-gradient-to-b from-background to-muted/50" id="projects">
+    <section className="py-16 px-4 md:px-6 lg:px-8" id="projects">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
