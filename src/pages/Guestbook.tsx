@@ -148,7 +148,7 @@ const Guestbook = () => {
           </div>
         ) : (
           <div className="flex flex-col">
-            <div className="flex flex-row items-center space-x-3">
+            <div className="flex flex-row items-center space-x-3 text-black font-tagesschrift">
               <Avatar>
                 <AvatarImage src={user?.photoURL ?? ""} />
                 <AvatarFallback>
@@ -165,16 +165,16 @@ const Guestbook = () => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
-            <div className="space-x-4 flex justify-center">
+            <div className="flex flex-col md:flex-row  md:space-x-4 justify-center">
               <Button
-                className="mt-4 w-[300px] self-center bg-[#606c38] hover:bg-[#606c38]/80"
+                className="mt-4 w-full md:w-[300px] self-center bg-[#606c38] hover:bg-[#606c38]/80"
                 onClick={handleSubmit}
               >
                 Send Message
               </Button>
               <Button
                 variant="outline"
-                className="mt-4 w-[300px] self-center dark:text-black dark:border-black dark:hover:bg-black dark:hover:text-white"
+                className="mt-4  w-full md:w-[300px] self-center dark:text-black dark:border-black dark:hover:bg-black dark:hover:text-white"
                 onClick={handleSignOut}
               >
                 Sign Out
