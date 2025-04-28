@@ -160,7 +160,7 @@ const Guestbook = () => {
               </p>
             </div>
             <Textarea
-              className="mt-4 w-full h-25 resize-none border-1 border-black"
+              className="mt-4 w-full h-25 resize-none border-1 border-black dark:text-black"
               placeholder="Leave a message..."
               value={message}
               onChange={(e) => setMessage(e.target.value)}
