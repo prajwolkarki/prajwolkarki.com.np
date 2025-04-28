@@ -174,7 +174,7 @@ const Guestbook = () => {
               </Button>
               <Button
                 variant="outline"
-                className="mt-4 w-[300px] self-center "
+                className="mt-4 w-[300px] self-center dark:text-black dark:border-black dark:hover:bg-black dark:hover:text-white"
                 onClick={handleSignOut}
               >
                 Sign Out
