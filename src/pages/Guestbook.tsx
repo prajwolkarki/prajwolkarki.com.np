@@ -125,7 +125,7 @@ const Guestbook = () => {
             <p className="text-slate-600 mb-4">
               Please log in below to share a message for future visitors
             </p>
-            <div className="flex flex-row mx-auto space-x-4 justify-center items-center mt-4 mb-2 w-full"> 
+            <div className="flex flex-col space-y-1.5 w-full md:flex-row mx-auto md:space-x-4 justify-center items-center mt-4 mb-2"> 
               <div className="flex items-center relative self-center">
                 <Button
                   className="bg-[#dd4b39] w-[200px] text-white px-7 py-3 rounded-lg hover:bg-[#e74c3c] hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none relative z-0"
