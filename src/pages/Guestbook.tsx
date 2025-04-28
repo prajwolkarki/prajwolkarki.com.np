@@ -167,7 +167,7 @@ const Guestbook = () => {
             />
             <div className="space-x-4 flex justify-center">
               <Button
-                className="mt-4 w-[300px] self-center bg-[#606c38]"
+                className="mt-4 w-[300px] self-center bg-[#606c38] hover:bg-[#606c38]/80"
                 onClick={handleSubmit}
               >
                 Send Message
