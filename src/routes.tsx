@@ -3,9 +3,10 @@ import { createBrowserRouter } from "react-router";
 import Hero from "./pages/Hero";
 import ContactForm from "./pages/Contact";
 import About from "./pages/About";
-import Projects from "./pages/Projects";
 import Blogs from "./pages/Blogs";
 import BlogPost from "./pages/BlogPost";
+import Guestbook from "./pages/Guestbook";
+import Projects from "./pages/Projects";
 
 const router = createBrowserRouter([
   {
@@ -25,8 +26,8 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "/projects",
-        element: <Projects />,
+        path: "/guestbook",
+        element: <Guestbook />,
       },
       {
         path: "/blogs",
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
         path: "blogs/:slug",
         element: <BlogPost />,
       },
+      {
+        path:"/projects",
+        element:<Projects />,
+      }
     ],
   },
 ]);
