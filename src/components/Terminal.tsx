@@ -1,190 +1,199 @@
 import { Lightbulb, MoonStar } from 'lucide-react';
 import { useState, useEffect, useRef, KeyboardEvent } from 'react';
+import Typed from 'typed.js';
 
-type CommandKey = 'help' | 'whoami' | 'projects' | 'skills' | 'clear' | 'hi';
+type CommandKey = 'help' | 'whoami' | 'projects' | 'skills' | 'clear' | 'hi' | 'ai';
 
 type OutputItem = {
-    command: string;
-    response: string;
+  command: string;
+  response: string;
 };
 
-const commands: Record<Exclude<CommandKey, 'projects'>, string> = {
-    hi: `
-      👋 Hey there! Let's say hello in a few different languages:<br><br>
-      - <span class="text-blue-400">English</span>: Hello from Nepal!<br>
-      - <span class="text-blue-400">Nepali</span>: नमस्ते from Nepal!<br>
-      - <span class="text-blue-400">Spanish</span>: ¡Hola from Nepal!<br>
-      - <span class="text-blue-400">French</span>: Bonjour from Nepal!<br>
-      - <span class="text-blue-400">German</span>: Hallo from Nepal!<br>
-      - <span class="text-blue-400">Japanese</span>: こんにちは (Konnichiwa) from Nepal!<br>
-      - <span class="text-blue-400">Korean</span>: 안녕하세요 (Annyeonghaseyo) from Nepal!<br><br>
-      🌍 No matter where you're from, you're always welcome here! 😊
-    `,
-    help: 'Available commands:<br><span class="text-yellow-400">hi</span> - Greet in multiple languages<br><span class="text-yellow-400">whoami</span> - About Prajwol<br><span class="text-yellow-400">projects</span> - List my projects<br><span class="text-yellow-400">skills</span> - My tech stack<br><span class="text-yellow-400">clear</span> - Clear the terminal',
-    whoami: 'Prajwol Karki, Software Developer from Kathmandu, Nepal. Passionate about coding, problem-solving, and building innovative solutions.',
-    skills: 'Tech Stack:<br>- Languages: PHP, Python, C, C++, JavaScript<br>- Frameworks: React, NextJS<br>- Tools: Linux, Git, GitLab, Docker',
-    clear: '',
+const commands: Record<Exclude<CommandKey, 'projects' | 'ai'>, string> = {
+  hi: `👋 Hello in multiple languages...`,
+  help: 'Available commands: hi, whoami, projects, skills, clear, ai',
+  whoami: 'Prajwol Karki...',
+  skills: 'Languages: PHP, JS...',
+  clear: '',
 };
 
 const Terminal = () => {
-    const [input, setInput] = useState<string>('');
-    const [output, setOutput] = useState<OutputItem[]>([
-        {
-            command: '',
-            response: "Welcome to Prajwol's Portfolio Terminal!<br>Type <span class=\"text-yellow-400\">help</span> to see available commands."
-        }
-    ]);
-    const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState<OutputItem[]>([]);
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const inputRef = useRef<HTMLInputElement>(null);
+  const outputRef = useRef<HTMLDivElement>(null);
+  const typedRef = useRef<HTMLSpanElement>(null);
 
-    const inputRef = useRef<HTMLInputElement>(null);
-    const outputRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const saved = localStorage.getItem('terminal-theme');
+    if (saved === 'dark' || saved === 'light') setTheme(saved);
+  }, []);
 
-    useEffect(() => {
-        const storedTheme = localStorage.getItem('terminal-theme');
-        if (storedTheme === 'light' || storedTheme === 'dark') {
-            setTheme(storedTheme);
-        }
-    }, []);
+  useEffect(() => {
+    localStorage.setItem('terminal-theme', theme);
+  }, [theme]);
 
-    useEffect(() => {
-        localStorage.setItem('terminal-theme', theme);
-    }, [theme]);
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
-    useEffect(() => {
-        // Focus input on mount
-        inputRef.current?.focus();
-    }, []);
+  useEffect(() => {
+    if (typedRef.current) {
+      const typed = new Typed(typedRef.current, {
+        strings: ["Welcome to Prajwol's Portfolio Terminal!<br>Type <span class='text-yellow-400'>help</span> to see available commands."],
+        typeSpeed: 40,
+        onComplete: () => {
+          if (inputRef.current) {
+            const inputElem = inputRef.current;
+            inputElem.focus();
+            const val = inputElem.value;
+            inputElem.value = '';
+            inputElem.value = val;
+          }
+          setOutput([
+            {
+              command: '',
+              response: typedRef.current?.innerHTML || '',
+            },
+          ]);
+        },
+      });
 
-    const fetchGitHubProjects = async (): Promise<string> => {
-        try {
-            const res = await fetch('https://api.github.com/users/prajwolkarki/repos');
-            const data = await res.json();
+      return () => typed.destroy();
+    }
+  }, []);
 
-            if (!Array.isArray(data)) {
-                return 'Failed to fetch projects from GitHub.';
-            }
+  const fetchGitHubProjects = async (): Promise<string> => {
+    try {
+      const res = await fetch('https://api.github.com/users/prajwolkarki/repos?per_page=100');
+      const data = await res.json();
 
-            const randomProjects = data
-                .sort(() => 0.5 - Math.random())
-                .slice(0, 5)
-                .map(
-                    (repo) =>
-                        `- <a href="${repo.html_url}" target="_blank" class="underline text-blue-400">${repo.name}</a>: ${repo.description || 'No description'}`
-                )
-                .join('<br>');
+      if (!Array.isArray(data)) return 'Failed to fetch projects.';
 
-            return `My selected projects:<br>${randomProjects}<br>Check more on <a href="https://github.com/prajwolkarki" target="_blank" class="underline text-blue-400">GitHub</a>.`;
-        } catch (err) {
-            return 'Error fetching GitHub projects.';
-        }
-    };
+      const topProjects = data
+        .filter((repo) => !repo.fork) 
+        .sort((a, b) => {
+          if (b.stargazers_count !== a.stargazers_count) {
+            return b.stargazers_count - a.stargazers_count;
+          }
+          return b.forks_count - a.forks_count;
+        })
+        .slice(0, 5);
 
-    const handleCommand = async (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            const cmd = input.trim().toLowerCase();
-            let response: string;
+      return `My top projects:<br>${topProjects
+        .map(
+          (repo) =>
+            `- <a href="${repo.html_url}" target="_blank" class="underline text-blue-400">${repo.name}</a>: ${repo.description || 'No description'}`
+        )
+        .join('<br>')}<br><br>More at <a href="https://github.com/prajwolkarki" class="underline text-blue-400" target="_blank">GitHub</a>.`;
+    } catch {
+      return 'Error fetching GitHub projects.';
+    }
+  };
+  const fetchAIResponse = async (input: string): Promise<string> => {
+    const apiKey = 'AIzaSyAOK7b4ofZOiRyXcnvLNhIl0mI1xvvaRcs';
+    try {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [{ text: input }],
+            },
+          ],
+        }),
+      });
+  
+      const data = await res.json();
+  
+      const content = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  
+      return content || 'No response from Gemini.';
+    } catch (error) {
+      console.error(error);
+      return 'Error calling Gemini API.';
+    }
+  };
+  
+  const handleCommand = async (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== 'Enter') return;
 
-            if (cmd === 'clear') {
-                setOutput([]);
-                setInput('');
-                return;
-            }
+    const cmd = input.trim();
+    const [baseCmd, ...args] = cmd.split(' ');
+    const argText = args.join(' ');
+    let response = '';
 
-            if (cmd === 'projects') {
-                response = await fetchGitHubProjects();
-            } else if (cmd in commands) {
-                response = commands[cmd as Exclude<CommandKey, 'projects'>];
-            } else {
-                response = `Command not found: ${cmd}. Type <span class="text-yellow-400">help</span> for available commands.`;
-            }
+    if (baseCmd === 'clear') {
+      setOutput([]);
+      setInput('');
+      return;
+    }
 
-            setOutput((prev) => [
-                ...prev,
-                { command: `prajwol@portfolio:~$ ${cmd}`, response },
-            ]);
-            setInput('');
+    if (baseCmd === 'projects') {
+      response = await fetchGitHubProjects();
+    } else if (baseCmd === 'ai') {
+      response = await fetchAIResponse(argText || 'Say something!');
+    } else if (baseCmd in commands) {
+      response = commands[baseCmd as keyof typeof commands];
+    } else {
+      response = `Command not found: ${baseCmd}. Type <span class="text-yellow-400">help</span>.`;
+    }
 
-            setTimeout(() => {
-                if (outputRef.current) {
-                    outputRef.current.scrollTop = outputRef.current.scrollHeight;
-                }
-            }, 0);
-        }
-    };
+    setOutput((prev) => [...prev, { command: `prajwol@portfolio:~$ ${cmd}`, response }]);
+    setInput('');
+    setTimeout(() => {
+      outputRef.current?.scrollTo(0, outputRef.current.scrollHeight);
+    }, 0);
+  };
 
-    return (
-        <div
-            className={`w-full flex flex-col rounded-lg shadow-lg font-mono ${
-                theme === 'dark'
-                    ? 'bg-black text-green-400'
-                    : 'bg-white text-gray-800 border border-gray-300'
-            }`}
-        >
-            <div
-                className={`w-full flex items-center p-2 ${
-                    theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'
-                }`}
-            >
-                <div className="flex space-x-2">
-                    <span className="w-3 h-3 bg-red-500 rounded-full"></span>
-                    <span className="w-3 h-3 bg-yellow-500 rounded-full"></span>
-                    <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-                </div>
-                <span className="ml-4 text-sm">
-                    prajwol@portfolio:~$
-                </span>
-                <button
-                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                    className="ml-auto text-xs text-white bg-gray-700 px-2 py-1 rounded hover:bg-gray-600"
-                >
-                    {theme === 'dark' ? <Lightbulb size={12}/> : <MoonStar size={12}/>}
-                </button>
-            </div>
-
-            <div
-                ref={outputRef}
-                className={`w-full p-4 h-70 overflow-y-auto text-sm ${
-                    theme === 'dark' ? 'bg-black' : 'bg-white'
-                }`}
-                style={{
-                    scrollbarWidth: 'none',
-                    msOverflowStyle: 'none',
-                }}
-            >
-                {output.map((item, index) => (
-                    <div key={index} className="mb-2">
-                        {item.command && <p>{item.command}</p>}
-                        <p dangerouslySetInnerHTML={{ __html: item.response }} />
-                    </div>
-                ))}
-            </div>
-
-            <div
-                className={`w-full flex items-center p-2 ${
-                    theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'
-                }`}
-            >
-                <span
-                    className={`mr-2 ${
-                        theme === 'dark' ? 'text-green-400' : 'text-gray-800'
-                    }`}
-                >
-                    prajwol@portfolio:~$
-                </span>
-                <input
-                    ref={inputRef}
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyPress={handleCommand}
-                    className={`flex-1 bg-transparent outline-none ${
-                        theme === 'dark' ? 'text-green-400' : 'text-black'
-                    }`}
-                    autoFocus
-                />
-            </div>
+  return (
+    <div className={`w-full rounded-lg font-mono shadow-lg ${theme === 'dark' ? 'bg-black text-green-400' : 'bg-white text-gray-800 border'}`}>
+      <div className={`flex items-center p-2 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'}`}>
+        <div className="flex space-x-2">
+          <span className="w-3 h-3 bg-red-500 rounded-full" />
+          <span className="w-3 h-3 bg-yellow-500 rounded-full" />
+          <span className="w-3 h-3 bg-green-500 rounded-full" />
         </div>
-    );
+        <span className="ml-4 text-sm">prajwol@portfolio:~$</span>
+        <button
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          className="ml-auto px-2 py-1 text-xs bg-gray-700 text-white rounded hover:bg-gray-600"
+        >
+          {theme === 'dark' ? <Lightbulb size={12} /> : <MoonStar size={12} />}
+        </button>
+      </div>
+
+      <div
+        ref={outputRef}
+        className="p-4 h-72 overflow-y-auto text-sm scrollbar-hide"
+      >
+        {output.length === 0 && <span ref={typedRef} />}
+        {output.map((item, index) => (
+          <div key={index} className="mb-2">
+            {item.command && <p>{item.command}</p>}
+            <p dangerouslySetInnerHTML={{ __html: item.response }} />
+          </div>
+        ))}
+      </div>
+
+      <div className={`flex items-center p-2 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'}`}>
+        <span className={`mr-2 ${theme === 'dark' ? 'text-green-400' : 'text-gray-800'}`}>prajwol@portfolio:~$</span>
+        <input
+          ref={inputRef}
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleCommand}
+          className={`flex-1 bg-transparent outline-none ${theme === 'dark' ? 'text-green-400' : 'text-black'}`}
+          autoFocus
+        />
+      </div>
+    </div>
+  );
 };
 
 export default Terminal;
