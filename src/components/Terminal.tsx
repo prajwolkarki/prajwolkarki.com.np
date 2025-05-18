@@ -127,14 +127,16 @@ const Terminal = () => {
 
     return (
         <div
-            className={`w-full md:max-w-full rounded-lg shadow-lg overflow-hidden font-mono ${theme === 'dark'
+            className={`w-full flex flex-col rounded-lg shadow-lg overflow-hidden font-mono ${
+                theme === 'dark'
                     ? 'bg-black text-green-400'
                     : 'bg-white text-gray-800 border border-gray-300'
-                }`}
+            }`}
         >
             <div
-                className={`flex items-center p-2 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'
-                    }`}
+                className={`w-full flex items-center p-2 ${
+                    theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'
+                }`}
             >
                 <div className="flex space-x-2">
                     <span className="w-3 h-3 bg-red-500 rounded-full"></span>
@@ -154,8 +156,9 @@ const Terminal = () => {
 
             <div
                 ref={outputRef}
-                className={`p-4 h-70 overflow-y-auto text-sm ${theme === 'dark' ? 'bg-black' : 'bg-white'
-                    }`}
+                className={`w-full p-4 h-70 overflow-y-auto text-sm ${
+                    theme === 'dark' ? 'bg-black' : 'bg-white'
+                }`}
                 style={{
                     scrollbarWidth: 'none',
                     msOverflowStyle: 'none',
@@ -170,12 +173,14 @@ const Terminal = () => {
             </div>
 
             <div
-                className={`flex items-center p-2 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'
-                    }`}
+                className={`w-full flex items-center p-2 ${
+                    theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'
+                }`}
             >
                 <span
-                    className={`mr-2 ${theme === 'dark' ? 'text-green-400' : 'text-gray-800'
-                        }`}
+                    className={`mr-2 ${
+                        theme === 'dark' ? 'text-green-400' : 'text-gray-800'
+                    }`}
                 >
                     prajwol@portfolio:~$
                 </span>
@@ -185,8 +190,9 @@ const Terminal = () => {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyPress={handleCommand}
-                    className={`flex-1 bg-transparent outline-none ${theme === 'dark' ? 'text-green-400' : 'text-black'
-                        }`}
+                    className={`flex-1 bg-transparent outline-none ${
+                        theme === 'dark' ? 'text-green-400' : 'text-black'
+                    }`}
                     autoFocus
                 />
             </div>
