@@ -114,7 +114,7 @@ const Terminal = () => {
 
     return (
         <div
-            className={`w-full flex flex-col rounded-lg shadow-lg overflow-hidden font-mono ${
+            className={`w-full flex flex-col rounded-lg shadow-lg font-mono ${
                 theme === 'dark'
                     ? 'bg-black text-green-400'
                     : 'bg-white text-gray-800 border border-gray-300'
