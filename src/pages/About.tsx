@@ -49,17 +49,51 @@ export default router;`;
               <p className="text-muted-foreground">Full Stack Developer</p>
 
               <div className="flex gap-2 mt-4">
-                <Button variant="outline" size="icon" className="rounded-full">
-                  <Github className="h-4 w-4" />
-                  <span className="sr-only">GitHub</span>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="icon"
+                  className="rounded-full"
+                >
+                  <Link
+                    to="https://github.com/prajwolkarki"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                  >
+                    <Github className="h-4 w-4" />
+                    <span className="sr-only">GitHub</span>
+                  </Link>
                 </Button>
-                <Button variant="outline" size="icon" className="rounded-full">
-                  <Linkedin className="h-4 w-4" />
-                  <span className="sr-only">LinkedIn</span>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="icon"
+                  className="rounded-full"
+                >
+                  <Link
+                    to="https://www.linkedin.com/in/prajwolkarki/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="h-4 w-4" />
+                    <span className="sr-only">LinkedIn</span>
+                  </Link>
                 </Button>
-                <Button variant="outline" size="icon" className="rounded-full">
-                  <Mail className="h-4 w-4" />
-                  <span className="sr-only">Email</span>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="icon"
+                  className="rounded-full"
+                >
+                  <Link
+                    to="mailto:prajwolkarki609@gmail.com"
+                    aria-label="Email"
+                  >
+                    <Mail className="h-4 w-4" />
+                    <span className="sr-only">Email</span>
+                  </Link>
                 </Button>
               </div>
 
@@ -179,8 +213,14 @@ export default router;`;
                     I'm always open to discussing new projects, creative ideas,
                     or opportunities to be part of your vision.
                   </p>
-                  <Button variant="outline" className="flex items-center">
-                    Contact Me <ArrowRight className="ml-2 h-4 w-4" />
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="flex items-center w-35 justify-center"
+                  >
+                    <Link to="/contact">
+                      Contact Me <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
                   </Button>
                 </div>
               </div>
