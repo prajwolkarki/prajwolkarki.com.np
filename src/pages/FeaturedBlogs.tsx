@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router';
 import useGetBlogs from "@/hooks/useGetBlogs";
 import { ChevronRight, ExternalLink } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const FeaturedBlogs = () => {
   const { data: posts, isPending, error } = useGetBlogs();
@@ -76,13 +77,13 @@ const FeaturedBlogs = () => {
         </div>
 
         <div className="mt-6 flex justify-start">
-          <button
+          <Button
             onClick={() => navigate('/blogs')}
-            className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md flex items-center dark:bg-green-700 dark:hover:bg-green-800 transition-colors"
+            className="font-medium py-2 px-4 rounded-md flex items-center"
           >
             See All
             <ChevronRight className="ml-2" size={16} />
-          </button>
+          </Button>
         </div>
       </div>
     </div>
