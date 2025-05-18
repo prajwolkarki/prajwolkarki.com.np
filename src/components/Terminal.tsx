@@ -127,7 +127,7 @@ const Terminal = () => {
 
     return (
         <div
-            className={`max-w-full rounded-lg shadow-lg overflow-hidden font-mono ${theme === 'dark'
+            className={`w-full md:max-w-full rounded-lg shadow-lg overflow-hidden font-mono ${theme === 'dark'
                     ? 'bg-black text-green-400'
                     : 'bg-white text-gray-800 border border-gray-300'
                 }`}
