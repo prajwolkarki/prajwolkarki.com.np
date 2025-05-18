@@ -2,6 +2,7 @@ import { BackgroundLines } from "@/components/ui/background-lines";
 import { useEffect, useRef } from "react";
 import Typed from "typed.js";
 import TechStack from "@/components/TechStack";
+import FeaturedBlogs from "./FeaturedBlogs";
 
 
 export default function Hero() {
@@ -83,6 +84,7 @@ export default function Hero() {
       </div>
 
       <TechStack />
+      <FeaturedBlogs/>
     </div>
   );
 }
