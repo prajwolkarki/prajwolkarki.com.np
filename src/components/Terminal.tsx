@@ -1,7 +1,12 @@
-import { Lightbulb, MoonStar } from 'lucide-react';
-import { useState, useEffect, useRef, KeyboardEvent } from 'react';
-import Typed from 'typed.js';
+import { useState, useEffect, useRef, KeyboardEvent } from "react";
+import {
+  Lightbulb,
+  MoonStar,
+} from "lucide-react";
 
+import Typed from "typed.js";
+
+// Terminal Component
 type CommandKey = 'help' | 'whoami' | 'projects' | 'skills' | 'clear' | 'hi' | 'ai';
 
 type OutputItem = {
@@ -91,6 +96,7 @@ const Terminal = () => {
       return 'Error fetching GitHub projects.';
     }
   };
+
   const fetchAIResponse = async (input: string): Promise<string> => {
     const apiKey = 'AIzaSyAOK7b4ofZOiRyXcnvLNhIl0mI1xvvaRcs';
     try {
@@ -109,9 +115,7 @@ const Terminal = () => {
       });
   
       const data = await res.json();
-  
       const content = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-  
       return content || 'No response from Gemini.';
     } catch (error) {
       console.error(error);
@@ -151,7 +155,9 @@ const Terminal = () => {
   };
 
   return (
-    <div className={`w-full rounded-lg font-mono shadow-lg ${theme === 'dark' ? 'bg-black text-green-400' : 'bg-white text-gray-800 border'}`}>
+    <div className={`w-full rounded-lg font-mono shadow-lg ${
+      theme === 'dark' ? 'bg-black text-green-400' : 'bg-white text-gray-800 border'
+    } max-w-full overflow-x-hidden`}>
       <div className={`flex items-center p-2 ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'}`}>
         <div className="flex space-x-2">
           <span className="w-3 h-3 bg-red-500 rounded-full" />
@@ -169,7 +175,7 @@ const Terminal = () => {
 
       <div
         ref={outputRef}
-        className="p-4 h-72 overflow-y-auto text-sm scrollbar-hide"
+        className="p-4 h-72 overflow-y-auto text-sm scrollbar-hide break-words whitespace-pre-wrap"
       >
         {output.length === 0 && <span ref={typedRef} />}
         {output.map((item, index) => (
@@ -181,14 +187,18 @@ const Terminal = () => {
       </div>
 
       <div className={`flex items-center p-2 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'}`}>
-        <span className={`mr-2 ${theme === 'dark' ? 'text-green-400' : 'text-gray-800'}`}>prajwol@portfolio:~$</span>
+        <span className={`mr-2 ${theme === 'dark' ? 'text-green-400' : 'text-gray-800'} truncate`}>
+          prajwol@portfolio:~$
+        </span>
         <input
           ref={inputRef}
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleCommand}
-          className={`flex-1 bg-transparent outline-none ${theme === 'dark' ? 'text-green-400' : 'text-black'}`}
+          className={`flex-1 bg-transparent outline-none ${
+            theme === 'dark' ? 'text-green-400' : 'text-black'
+          } min-w-0`}
           autoFocus
         />
       </div>
