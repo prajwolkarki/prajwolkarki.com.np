@@ -48,7 +48,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
               {title}
             </CardTitle>
           </CardHeader>
-          <CardFooter className="p-0 flex flex-col items-start sm:flex-row sm:items-center gap-1 sm:gap-4 text-xs dark:text-white">
+          <CardFooter className="p-0 flex md:flex-col items-start sm:items-center gap-3 sm:gap-4 text-xs dark:text-white">
             <div>{formatDate(publishedAt)}</div>
             <div className="flex items-center gap-1 dark:text-white">
               <User2 size={16} />
