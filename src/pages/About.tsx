@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   ArrowRight,
   University,
@@ -10,25 +10,18 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Link } from "react-router";
 import { Badge } from "@/components/ui/badge";
 import Terminal from "@/components/Terminal";
 
 export default function About() {
   const [activeTab, setActiveTab] = useState("about");
+  const [isMounted, setIsMounted] = useState(false);
 
-  const codeString = `/PrajwolKarki/routes/about.js
-import express from "express";
-const router = express.Router();
-router.get("/about", (req, res) => {
-  res.status(200).json({ 
-    message: "Hi, I'm a passionate developer who loves building web applications with modern technologies!"
-  });
-});
-export default router;`;
-
+  useEffect(() => {
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
   return (
     <div className="container mx-auto px-4 py-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -136,8 +129,7 @@ export default router;`;
                     intuitive, user-friendly experiences.
                   </p>
                 </div>
-
-               <Terminal/>
+                {isMounted && <Terminal />}
 
                 <div>
                   <h3 className="text-xl font-semibold  font-tagesschrift mb-3">
@@ -181,19 +173,6 @@ export default router;`;
             </TabsContent>
 
             <TabsContent value="code" className="mt-2">
-              <SyntaxHighlighter
-                language="javascript"
-                style={dracula}
-                showLineNumbers
-                customStyle={{
-                  overflow: "hidden",
-                  scrollbarWidth: "none",
-                  overflowX: "auto",
-                  fontSize: "12px",
-                }}
-              >
-                {codeString}
-              </SyntaxHighlighter>
               <div className="flex flex-col space-y-3 mt-7">
               <h1 className="font-tagesschrift text-2xl mb-3">Education</h1>
               <p className="text-slate-600 text-sm font-roboto-mono">Academic Experiences That Defined Me</p>
@@ -262,7 +241,6 @@ export default router;`;
               </div>
             </div>
             </TabsContent>
-          
           </Tabs>
         </div>
       </div>
