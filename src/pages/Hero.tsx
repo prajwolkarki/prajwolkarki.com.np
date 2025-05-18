@@ -4,7 +4,6 @@ import Typed from "typed.js";
 import TechStack from "@/components/TechStack";
 import FeaturedBlogs from "./FeaturedBlogs";
 
-
 export default function Hero() {
   const typedRef = useRef<HTMLElement | null>(null);
   const typedInstanceRef = useRef<Typed | null>(null);
@@ -54,7 +53,6 @@ export default function Hero() {
           <h2 className="text-lg bg-gradient-to-r from-fuchsia-600 to-pink-600 mt-2 text-transparent bg-clip-text font-bold">
             <span ref={typedRef}></span>
           </h2>
-
           <p className="text-gray-600 text-left -tracking-wide leading-5 font-serif mt-4 max-w-md dark:text-white">
             I transform ideas into elegant web experiences through code. Like a
             modern-day wizard, I blend technical expertise with creative vision
@@ -64,7 +62,6 @@ export default function Hero() {
             impact in an ever-evolving technological landscape.
           </p>
         </div>
-
         <div className="mt-6 md:mt-0 md:order-1 md:mr-8 ">
           <div className="w-32 h-32 md:w-50 md:h-50 border-black dark:border-white border rounded-full p-4">
             <img
@@ -76,13 +73,10 @@ export default function Hero() {
         </div>
       </div>
       <div className="flex justify-center mt-6">
-
           <h1 className="inline-block p-4 font-bold font-tagesschrift text-2xl">
             Skills and Tools I Use
           </h1>
-
       </div>
-
       <TechStack />
       <FeaturedBlogs/>
     </div>

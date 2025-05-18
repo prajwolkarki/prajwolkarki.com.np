@@ -9,12 +9,12 @@ import {
   User,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Link } from "react-router";
 import { Badge } from "@/components/ui/badge";
+import Terminal from "@/components/Terminal";
 
 export default function About() {
   const [activeTab, setActiveTab] = useState("about");
@@ -137,53 +137,7 @@ export default router;`;
                   </p>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-tagesschrift font-semibold mb-3">
-                    What I Do
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Card>
-                      <CardContent className="p-4">
-                        <h4 className="font-medium mb-2">
-                          Frontend Development
-                        </h4>
-                        <p className="text-sm text-muted-foreground">
-                          Building responsive and interactive user interfaces
-                          using React, Next.js, and modern CSS frameworks.
-                        </p>
-                      </CardContent>
-                    </Card>
-                    <Card>
-                      <CardContent className="p-4">
-                        <h4 className="font-medium mb-2">
-                          Backend Development
-                        </h4>
-                        <p className="text-sm text-muted-foreground">
-                          Creating robust server-side applications with Node.js,
-                          Express, and various database technologies.
-                        </p>
-                      </CardContent>
-                    </Card>
-                    <Card>
-                      <CardContent className="p-4">
-                        <h4 className="font-medium mb-2">API Development</h4>
-                        <p className="text-sm text-muted-foreground">
-                          Designing and implementing RESTful APIs and GraphQL
-                          services for seamless data exchange.
-                        </p>
-                      </CardContent>
-                    </Card>
-                    <Card>
-                      <CardContent className="p-4">
-                        <h4 className="font-medium mb-2">DevOps</h4>
-                        <p className="text-sm text-muted-foreground">
-                          Setting up CI/CD pipelines and managing cloud
-                          infrastructure for optimal application performance.
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </div>
+               <Terminal/>
 
                 <div>
                   <h3 className="text-xl font-semibold  font-tagesschrift mb-3">
