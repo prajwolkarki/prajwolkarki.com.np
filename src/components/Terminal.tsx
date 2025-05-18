@@ -6,7 +6,6 @@ import {
 
 import Typed from "typed.js";
 
-// Terminal Component
 type CommandKey = 'help' | 'whoami' | 'projects' | 'skills' | 'clear' | 'hi' | 'ai';
 
 type OutputItem = {
@@ -15,13 +14,12 @@ type OutputItem = {
 };
 
 const commands: Record<Exclude<CommandKey, 'projects' | 'ai'>, string> = {
-  hi: `👋 Hello in multiple languages...`,
+  hi: `👋 Hello from Nepal!\n🌏 Hola desde Nepal!`,
   help: 'Available commands: hi, whoami, projects, skills, clear, ai',
-  whoami: 'Prajwol Karki...',
-  skills: 'Languages: PHP, JS...',
+  whoami: `I'm Prajwol Karki, a passionate developer from Nepal specializing in web technologies, automation, and building efficient solutions.`,
+  skills: 'Languages: PHP, JavaScript, TypeScript, React, Node.js, SQL, etc.',
   clear: '',
 };
-
 const Terminal = () => {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState<OutputItem[]>([]);
