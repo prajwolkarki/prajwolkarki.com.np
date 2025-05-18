@@ -106,7 +106,7 @@ export default function About() {
 
                 <div>
                   <h3 className="text-xl font-semibold font-tagesschrift mb-3">My Journey</h3>
-                  <p className="text-white font-tagesschrift leading-relaxed mb-4">
+                  <p className="dark:text-white font-tagesschrift leading-relaxed mb-4">
                     My journey in software development began with a curiosity
                     about how websites work. This curiosity evolved into a
                     passion for creating digital experiences that solve
@@ -114,7 +114,7 @@ export default function About() {
                     projects ranging from e-commerce platforms to content
                     management systems.
                   </p>
-                  <p className="text-white font-tagesschrift leading-relaxed">
+                  <p className="dark:text-white font-tagesschrift leading-relaxed">
                     I'm constantly learning and exploring new technologies to
                     stay at the forefront of web development. When I'm not
                     coding, you can find me hiking, reading tech blogs, or
@@ -124,7 +124,7 @@ export default function About() {
 
                 <div>
                   <h3 className="text-xl font-semibold font-tagesschrift mb-3">Let's Connect</h3>
-                  <p className="text-white font-tagesschrift leading-relaxed mb-4">
+                  <p className="dark:text-white font-tagesschrift leading-relaxed mb-4">
                     I'm always open to discussing new projects, creative ideas,
                     or opportunities to be part of your vision.
                   </p>
