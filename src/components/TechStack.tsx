@@ -29,14 +29,14 @@ const TechStack = () => {
 
   return (
     <div className="relative flex w-full flex-col mt-5 items-center justify-center overflow-hidden h-auto gap-4 py-4">
-      <Marquee pauseOnHover direction="left" speed={30} gradient={false}>
+      <Marquee pauseOnHover direction="left" speed={30} gradient={false} className="scrollbar-hide">
         <div className="flex">
           {firstRow.map((tech, index) => (
             <TechCard key={`first-${tech.name}`} tech={tech} index={index} />
           ))}
         </div>
       </Marquee>
-      <Marquee pauseOnHover direction="right" speed={20} gradient={false}>
+      <Marquee pauseOnHover direction="right" speed={20} gradient={false} className="scrollbar-hide">
         <div className="flex">
           {secondRow.map((tech, index) => (
             <TechCard key={`second-${tech.name}`} tech={tech} index={index} />
