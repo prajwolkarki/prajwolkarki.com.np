@@ -35,7 +35,7 @@ const projects = [
     description: "A simple e-commerce app built with React and Zustand, featuring product listing, cart management, and checkout.",
     image: "/images/ecommerce.png",
     tags: ["Zustand", "FakeStore API", "React"],
-    liveUrl: "https://prajwolverse.vercel.app/",
+    liveUrl: "https://ecommerce-theta-lovat-25.vercel.app/",
     githubUrl: "https://github.com/prajwolkarki/ecommerce",
     category: "frontend",
   },
